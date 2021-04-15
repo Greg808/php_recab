@@ -1,4 +1,4 @@
-#Single Responsibility
+# Single Responsibility
 
 ## „Es sollte nie mehr als einen Grund dafür geben, eine Klasse zu ändern.“
 
