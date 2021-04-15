@@ -1,0 +1,23 @@
+{
+    "name": "gregorweindl/single-responsibility",
+    "description": "example single-responsibility",
+    "authors": [
+        {
+            "name": "Gregor Weindl",
+            "email": "gregor-weindl@aon.at"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "8.*",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Exercise\\": "app/src"
+        }
+    },
+    "require-dev": {
+        "fakerphp/faker": "1.15.x-dev"
+    }
+}
