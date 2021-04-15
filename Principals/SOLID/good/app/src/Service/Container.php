@@ -6,6 +6,7 @@ namespace Exercise\Service;
 use Exercise\Faker\FakerInterface;
 use Exercise\Faker\SalesFaker;
 use Exercise\Repository\CollectionSalesRepository;
+use Faker\Factory;
 use Faker\Generator;
 use PDO;
 
