@@ -2,7 +2,6 @@
 
 
 namespace Exercise\Formatter;
-//@todo implement this
 
 class SalesHtmlOutput implements SalesOutputInterface
 {
