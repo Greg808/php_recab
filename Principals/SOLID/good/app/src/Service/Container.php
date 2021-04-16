@@ -5,6 +5,8 @@ namespace Exercise\Service;
 
 use Exercise\Faker\FakerInterface;
 use Exercise\Faker\SalesFaker;
+use Exercise\Formatter\SalesHtmlOutput;
+use Exercise\Formatter\SalesOutputInterface;
 use Exercise\Repository\CollectionSalesRepository;
 use Faker\Factory;
 use Faker\Generator;
@@ -13,19 +15,19 @@ use PDO;
 
 class Container
 {
+    private ?PDO $pdo = null;
 
-    private $pdo;
+    private ?SalesReporter $salesReporter = null;
 
-    private $salesReporter;
+    private ?Generator $faker = null;
 
-    private $faker;
+    private ?FakerInterface $salesFaker = null;
 
-    private $salesFaker;
+    private ?SalesHtmlOutput $salesHtmlOutput = null;
 
 
     public function __construct(private array $configuration)
-    {
-    }
+    {}
 
     public function getPDO(): PDO
     {
@@ -35,7 +37,7 @@ class Container
                 $this->configuration['db_u'],
                 $this->configuration['db_p']
             );
-            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         return $this->pdo;
     }
@@ -49,15 +51,24 @@ class Container
         return $this->salesReporter;
     }
 
+    public function getSalesHtmlOutput(): SalesOutputInterface
+    {
+        if ($this->salesHtmlOutput === null) {
+
+            $this->salesHtmlOutput = new SalesHtmlOutput();
+        }
+        return $this->salesHtmlOutput;
+    }
+
     public function getSalesFaker(): FakerInterface
     {
         if ($this->salesFaker === null) {
-            $this->salesFaker = new SalesFaker($this->getPDO(), $this->getFaker());;
+            $this->salesFaker = new SalesFaker($this->getPDO(), $this->getFakerFactory());
         }
         return $this->salesFaker;
     }
 
-    protected function getFaker(): Generator
+    protected function getFakerFactory(): Generator
     {
         if ($this->faker === null) {
             $this->faker = Factory::create();
