@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Exercise\Formatter;
+namespace Exercise\GoodSingleResposibility\Formatter;
 
 class SalesHtmlOutput implements SalesOutputInterface
 {
     public function output(float $sales): string
     {
-        return "<h1>Sales: $sales</h1>";
+        return "<h3>Sales: $sales</h3>";
     }
 }

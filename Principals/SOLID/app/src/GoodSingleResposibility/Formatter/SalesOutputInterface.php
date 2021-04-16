@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Exercise\Formatter;
+namespace Exercise\GoodSingleResposibility\Formatter;
 
 
 interface SalesOutputInterface

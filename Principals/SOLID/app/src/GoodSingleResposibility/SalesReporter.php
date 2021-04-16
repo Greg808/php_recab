@@ -1,11 +1,13 @@
 <?php
 
 
-namespace Exercise\Service;
+namespace Exercise\GoodSingleResposibility;
 
 
-use Exercise\Formatter\SalesOutputInterface;
-use Exercise\Repository\SalesRepositoryInterface;
+
+
+use Exercise\GoodSingleResposibility\Formatter\SalesOutputInterface;
+use Exercise\GoodSingleResposibility\Repository\SalesRepositoryInterface;
 
 class SalesReporter
 {

@@ -1,7 +1,7 @@
 <?php
 
 
- namespace Exercise\Repository;
+ namespace Exercise\GoodSingleResposibility\Repository;
 
 
 interface SalesRepositoryInterface
