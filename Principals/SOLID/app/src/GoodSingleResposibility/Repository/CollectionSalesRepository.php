@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Exercise\Repository;
+namespace Exercise\GoodSingleResposibility\Repository;
 
 
 class CollectionSalesRepository implements SalesRepositoryInterface

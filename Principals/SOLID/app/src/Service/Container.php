@@ -5,9 +5,10 @@ namespace Exercise\Service;
 
 use Exercise\Faker\FakerInterface;
 use Exercise\Faker\SalesFaker;
-use Exercise\Formatter\SalesHtmlOutput;
-use Exercise\Formatter\SalesOutputInterface;
-use Exercise\Repository\CollectionSalesRepository;
+use Exercise\GoodSingleResposibility\Formatter\SalesHtmlOutput;
+use Exercise\GoodSingleResposibility\Formatter\SalesOutputInterface;
+use Exercise\GoodSingleResposibility\Repository\CollectionSalesRepository;
+use Exercise\GoodSingleResposibility\SalesReporter;
 use Faker\Factory;
 use Faker\Generator;
 use PDO;
@@ -23,7 +24,7 @@ class Container
 
     private ?FakerInterface $salesFaker = null;
 
-    private ?SalesHtmlOutput $salesHtmlOutput = null;
+    private ?SalesOutputInterface $salesHtmlOutput = null;
 
 
     public function __construct(private array $configuration)
@@ -68,7 +69,7 @@ class Container
         return $this->salesFaker;
     }
 
-    protected function getFakerFactory(): Generator
+    private function getFakerFactory(): Generator
     {
         if ($this->faker === null) {
             $this->faker = Factory::create();
