@@ -4,6 +4,7 @@
 namespace Exercise\Service;
 
 
+use Exercise\Formatter\SalesOutputInterface;
 use Exercise\Repository\SalesRepositoryInterface;
 
 class SalesReporter
@@ -20,8 +21,16 @@ class SalesReporter
     {
     }
 
-    public function betweenDate(string $startDate, string $endDate)
+    /**
+     * returns sells between an start and end date
+     * @param string $startDate
+     * @param string $endDate
+     * @param SalesOutputInterface $formatter
+     * @return mixed
+     */
+    public function betweenDate(string $startDate, string $endDate, SalesOutputInterface $formatter): mixed
     {
-        return $this->repository->betweenDate($startDate, $endDate);
+        $sales = $this->repository->betweenDate($startDate, $endDate);
+        return $formatter->output($sales);
     }
 }
